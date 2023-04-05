@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  web:
+    build: .
+    working_dir: /app
+    container_name: gin
+    env_file: .env
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    container_name: auth-db
+    env_file: .env
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql:/var/lib/mysql

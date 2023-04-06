@@ -3,3 +3,9 @@
 
 # mysql data
 mysql
+
+# cache package files
+vendor
+
+# binary file
+app

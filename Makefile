@@ -1,13 +1,16 @@
-.PHONY: fmt build test vendor
+.PHONY: fmt build test vendor tidy
 
 fmt:
-	go fmt ./...
+	docker compose run --rm web go fmt ./...
 
 build:
-	go build -o app ./...
+	docker compose run --rm web go build -o app ./cmd/...
 
 test:
-	go test -v ./...
+	docker compose run --rm web go test -v ./...
 
 vendor:
-	go mod vendor
+	docker compose run --rm web go mod vendor
+
+tidy:
+	docker compose run --rm web go mod tidy
